@@ -1,8 +1,6 @@
 package start.shildt.part_1.chapter03;
 
-/**
- * Created by Sergiy on 2/1/17.
- */
+
 // Продемонстрировать применение значений типа Ьoolean
 class BoolTest {
     public static void main(String[] args) {

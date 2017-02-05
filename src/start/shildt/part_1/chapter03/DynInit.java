@@ -1,8 +1,5 @@
 package start.shildt.part_1.chapter03;
 
-/**
- * Created by Sergiy on 2/2/17.
- */
 
 // В этом примере демонстрируется динамическая инициализация
 class DynInit {

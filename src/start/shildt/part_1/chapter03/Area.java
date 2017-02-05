@@ -1,8 +1,5 @@
 package start.shildt.part_1.chapter03;
 
-/**
- * Created by Sergiy on 2/1/17.
- */
 
 //вычислить площадь круга
 

@@ -1,8 +1,5 @@
 package start.shildt.part_1.chapter03;
 
-/**
- * Created by Sergiy on 2/2/17.
- */
 
 // Продемонстрировать область действия блока кода
 class Scope {
