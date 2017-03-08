@@ -1,5 +1,7 @@
 package start.practice.MyGame;
 
+import java.util.Random;
+
 /**
  * Created by Sergiy on 3/5/17.
  */
@@ -23,12 +25,12 @@ public class Realization {
 
     public void displayBoard() {
 
-        System.out.println("  0  " + grid[0][0] + " | " + grid[0][1] + " | " + grid[0][2]);
+        System.out.println("  1  " + grid[0][0] + " | " + grid[0][1] + " | " + grid[0][2]);
         System.out.println("    ---*---*---");
-        System.out.println("  1  " + grid[1][0] + " | " + grid[1][1] + " | " + grid[1][2]);
+        System.out.println("  2  " + grid[1][0] + " | " + grid[1][1] + " | " + grid[1][2]);
         System.out.println("    ---*---*---");
-        System.out.println("  2  " + grid[2][0] + " | " + grid[2][1] + " | " + grid[2][2]);
-        System.out.println("     0   1   2 ");
+        System.out.println("  3  " + grid[2][0] + " | " + grid[2][1] + " | " + grid[2][2]);
+        System.out.println("     1   2   3 ");
     }
 
     //выполним проверку на заполненность ячеек игрового поля
@@ -95,13 +97,12 @@ public class Realization {
 
     //Зададим порядок изменения игроков в игре.
 
-    public char changePlayer(char currentPlayer) {
-        char newPlayer = ' ';
-        if (currentPlayer == 'o')
-            newPlayer = 'x';
-        if (currentPlayer == 'x')
-            newPlayer = 'o';
-        return newPlayer;
+    public char changePlayer(char player) {
+        if (player == 'x')
+            player = 'o';
+        else
+            player = 'x';
+        return player;
     }
 
     // поставим значение 'x' или 'o', которое задает игрок.
@@ -113,7 +114,7 @@ public class Realization {
 
             return true;
 
-        //проверяем наличие в указанной точке символа 'x' или 'o'
+            //проверяем наличие в указанной точке символа 'x' или 'o'
         else if (grid[row][column] == 'x' || grid[row][column] == 'o')
             return true;
 
@@ -127,6 +128,33 @@ public class Realization {
         grid[row][column] = player;
 
     }
+
+    // ход допустим, если выполняется условие
+
+//    public boolean correctAction (int row, int column) {
+//        return row >= 0 && row < 3 && column >= 0 && column < 3
+//                &&
+//                grid[row][column] == 0;
+//    }
+
+
+    //задаем правило, по которому ходит компьютер
+
+    public int[] AI() { //начало метода AI
+
+        Random random = new Random();
+
+        int randomValue[] = new int[2];
+
+        do {
+            randomValue[0] = random.nextInt(3);
+            randomValue[1] = random.nextInt(3);
+
+        } while (!checkSymbol(randomValue[0], randomValue[1]));
+        return randomValue;
+
+    } //окончание метода AI
+
 
 }
 
