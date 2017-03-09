@@ -21,3 +21,7 @@ out/
 /.project
 /bin/
 /.classpath
+
+src/start/practice/*
+
+!/src/start/practice/MyGame/
