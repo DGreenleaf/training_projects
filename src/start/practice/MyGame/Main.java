@@ -12,7 +12,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Realization realization = new Realization();
+        TheGame realization = new TheGame();
         Scanner input = new Scanner(System.in);
 
         int row, column;
@@ -32,9 +32,9 @@ public class Main {
                 row = input.nextInt() - 1;
                 System.out.println("\n" + "Игрок " + player + " ,укажите номер колонки:");
                 column = input.nextInt() - 1;
-                realization.changeBoard(player, row, column);
-                realization.displayBoard();
-                realization.changePlayer(player);
+//                realization.changeBoard(player, row, column);
+//                realization.displayBoard();
+//                realization.changePlayer(player);
 
                 while (realization.checkSymbol(row, column)) {
                     System.out.println("Ячейка уже занята или находится вне игрового поля, пожалуйста, повторите корректный ввод.");
@@ -43,13 +43,16 @@ public class Main {
                     column = input.nextInt() - 1;
                 }
 
+                realization.changeBoard(player, row, column);
+                player = realization.changePlayer(player);
+
             } else if (player == 'o') {
                 int array[] = realization.AI();
                 row = array[0];
                 column = array[1];
                 realization.changeBoard(player, row, column);
                 realization.displayBoard();
-                realization.changePlayer(player);
+                player = realization.changePlayer(player);
             }
 
 
@@ -59,7 +62,7 @@ public class Main {
             if (realization.checkForWin()) {
                 System.out.println("С победой! Поздравляем игрока " + player + " !");
                 System.exit(0);
-            } else if (realization.boardFilling()) {
+            } else if (realization.isBoardFilling()) {
                 System.out.println("Игра закончилась ничьей!");
                 System.exit(0);
             }
