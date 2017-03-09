@@ -32,9 +32,6 @@ public class Main {
                 row = input.nextInt() - 1;
                 System.out.println("\n" + "Игрок " + player + " ,укажите номер колонки:");
                 column = input.nextInt() - 1;
-                realization.changeBoard(player, row, column);
-                realization.displayBoard();
-                realization.changePlayer(player);
 
                 while (realization.checkSymbol(row, column)) {
                     System.out.println("Ячейка уже занята или находится вне игрового поля, пожалуйста, повторите корректный ввод.");
@@ -43,18 +40,26 @@ public class Main {
                     column = input.nextInt() - 1;
                 }
 
+                realization.changeBoard(player, row, column);
+                // DIMA: display board after AI step
+                //	realization.displayBoard();
+
+                // DIMA: realization.changePlayer(player);
+                // As it returns a new value for player, so its result should be assigned to the "player" variable
+                // as I've written below:
+                player = realization.changePlayer(player);
+
             } else if (player == 'o') {
                 int array[] = realization.AI();
                 row = array[0];
                 column = array[1];
                 realization.changeBoard(player, row, column);
                 realization.displayBoard();
-                realization.changePlayer(player);
+                // DIMA: realization.changePlayer(player);
+                // As it returns a new value for player, so its result should be assigned to the "player" variable
+                // as I've written below:
+                player = realization.changePlayer(player);
             }
-
-
-//            player = realization.changePlayer(player);
-
 
             if (realization.checkForWin()) {
                 System.out.println("С победой! Поздравляем игрока " + player + " !");
@@ -67,6 +72,5 @@ public class Main {
 
     }
 }
-
 
 
